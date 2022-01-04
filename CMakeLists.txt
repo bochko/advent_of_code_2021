@@ -13,6 +13,14 @@ add_library(1_sonar_sweep)
 target_sources(1_sonar_sweep PRIVATE src/1_sonar_sweep.cpp)
 target_include_directories(1_sonar_sweep PUBLIC src)
 
-add_executable(1_sonar_sweep_test test/1_sonar_sweep_test.cpp)
-target_link_libraries(1_sonar_sweep_test 1_sonar_sweep gtest_main)
-gtest_discover_tests(1_sonar_sweep_test)
+add_library(2_dive)
+target_sources(2_dive PRIVATE src/2_dive.cpp)
+target_include_directories(2_dive PUBLIC src)
+
+add_executable(advent_of_code_2021 test/advent_of_code_2021.cpp)
+target_link_libraries(advent_of_code_2021 
+    gtest_main
+    1_sonar_sweep
+    2_dive
+)
+gtest_discover_tests(advent_of_code_2021)
